@@ -6,7 +6,8 @@ use Illuminate\Contracts\Validation\Rule;
 
 class Phone implements Rule
 {
-    const PHONE = '/^((d{3})[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{4}$/';
+    //(123) 456-7899 - correct
+    const PHONE = '/^\(?\d{3}\)?[\- ]?\d{3}[\d\- ]{5}$/';
     /**
      * Create a new rule instance.
      *
