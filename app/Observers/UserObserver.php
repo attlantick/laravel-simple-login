@@ -20,6 +20,8 @@ class UserObserver
         if ($user->photo){
             $user->photo = File::save($user->photo, $user->phone);
         }
+
+        $user->phone = str_replace(['-','(',')',' '],'',$user->phone);
     }
 
 

@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label for="name">Zip</label>
                     <input type="text" v-model="user.zip"
-                           v-validate="{ regex: /^[0-9]+$/ }" id="zip"
+                           v-validate="{ regex: /^\d{5}$/ }" id="zip"
                            name="zip"
                            class="form-control"/>
                     <div v-if="submitted && errors.has('zip')"
