@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function store(StoreUser $request){
 
         return response(['data'=> [
-            'success' => User::create($request->validated())
+            User::create($request->validated())
         ]],201);
 
     }
