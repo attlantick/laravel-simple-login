@@ -19,7 +19,19 @@
     </head>
     <body>
         <div id="app">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">Sign Up</div>
 
+                            <div class="card-body">
+                                <register-form/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="{{ asset('js/app.js') }}" defer></script>
     </body>

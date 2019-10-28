@@ -28,6 +28,7 @@ class StoreUser extends FormRequest
             'name'  => 'required|string|max:100|min:5',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', new Phone(), 'unique:users'],
+            'zip'  => 'nullable|regex:/^\d{6}$/',
             //all file types and max size 10000kb
             'file'  => 'nullable|file|max:10000',
             //only images
