@@ -39,10 +39,13 @@
                     <div class="custom-file">
                         <input accept="image/x-png,image/gif,image/jpeg"
                                @change="changePhoto($event)"
-                               type="file" class="custom-file-input" id="photo">
+                               name="photo"
+                               id="photo"
+                               v-validate
+                               type="file" class="custom-file-input">
                         <label class="custom-file-label" for="photo">Choose photo</label>
                     </div>
-                    <div v-if="submitted && errors.has('photo')"
+                    <div v-if="errors.has('photo')"
                          class="invalid-feedback">{{ errors.first('photo') }}</div>
                 </div>
                 <div class="form-group">
@@ -50,10 +53,13 @@
                         <input :value="files.file"
                                @change="changeFile($event)"
                                type="file"
-                               class="custom-file-input" id="file">
+                               name="file"
+                               id="file"
+                               v-validate
+                               class="custom-file-input" >
                         <label class="custom-file-label" for="file">Choose file</label>
                     </div>
-                    <div v-if="submitted && errors.has('file')"
+                    <div v-if="errors.has('file')"
                          class="invalid-feedback">{{ errors.first('file') }}</div>
                 </div>
 
@@ -85,6 +91,9 @@
                 submitted:  false
             }
         },
+        created(){
+
+        },
         methods:{
             changeFile(e){
                 if (e.target.files[0]){
@@ -93,6 +102,10 @@
             },
             changePhoto(e){
                 if (e.target.files[0]){
+                    //check file type
+                    if (!this.checkImage(e.target.files[0])){
+                        return
+                    }
                     this.files.photo = e.target.files[0];
                     let reader  = new FileReader();
                     reader.addEventListener("load", function () {
@@ -119,6 +132,10 @@
                         })
                     }
                 });
+            },
+            checkImage(file){
+                const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+                return file && acceptedImageTypes.includes(file['type'])
             }
         }
     };
