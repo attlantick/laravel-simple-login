@@ -73,6 +73,8 @@
 </template>
 
 <script>
+    import {errorsHandler} from "../../helpers";
+
     export default {
         data () {
             return {
@@ -90,9 +92,6 @@
                 photoPrev:  null,
                 submitted:  false
             }
-        },
-        created(){
-
         },
         methods:{
             changeFile(e){
@@ -119,16 +118,18 @@
                 this.$validator.validate().then(valid => {
                     if (valid) {
                         let data = new FormData();
+                        //Add fields to request
                         for (let key in this.user) {
                             data.set(key,this.user[key])
                         }
+                        //Add files to request
                         for (let key in this.files) {
                             data.append(key,this.files[key])
                         }
                         axios.post('',data).then(res=>{
                             alert('Success');
                         }).catch(err => {
-                            this.$setLaravelValidationErrorsFromResponse(err.response.data);
+                            errorsHandler(this,err)
                         })
                     }
                 });

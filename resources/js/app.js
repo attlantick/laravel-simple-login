@@ -12,7 +12,6 @@ window.Vue = require('vue');
  * Validation for vue with laravel response
  */
 import VeeValidate from 'vee-validate';
-import VeeValidateLaravel from 'vee-validate-laravel';
 
 Vue.use(VeeValidate, {
     classes: true,
@@ -21,7 +20,7 @@ Vue.use(VeeValidate, {
         valid: 'is-valid'
     }
 });
-Vue.use(VeeValidateLaravel);
+
 
 /**
  * The following block of code may be used to automatically register your
