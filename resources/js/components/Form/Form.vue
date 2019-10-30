@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="text" v-model="user.phone" v-validate="{required:true,regex: /^\(?\d{3}\)?[\- ]?\d{3}[\d\- ]{5}$/}" id="phone" name="phone" class="form-control" />
+                    <input type="text" v-model="user.phone" v-validate="{required:true,regex: /^\(?\d{3}\)?[\- ]?\d{3}([\- ])?\d{4}$/}" id="phone" name="phone" class="form-control" />
                     <div v-if="submitted && errors.has('phone')" class="invalid-feedback">{{ errors.first('phone') }}</div>
                 </div>
                 <div class="form-group">
